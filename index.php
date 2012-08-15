@@ -1,3 +1,8 @@
+<?php
+	require_once('config.php');
+	require_once('db.php');
+?>
+
 <html>
 	<head>
 		<title>S3330740 WDA Assignment 1</title>
@@ -12,7 +17,7 @@
 		<form class='searchform' action='search.php' method="get">
 			<ol>
 				<li>
-					<label for="wine">Wine:</label>
+					<label for="wine">Wine Variety:</label>
 					<input type="text" name="wine" id="wine" value='*' />
 				</li>
 				<li>
@@ -23,30 +28,38 @@
 					<label for="region">Region:</label>
 					<select name="region" id="region">
 						<option>*</option>
-						<option>Melbourne</option>
-						<option>Sydney</option>
+						<?php
+							foreach (getRegions() as $region)
+								echo '<option>' . $region . '</option>';
+						?>
 					</select>
 				</li>
 				<li>
 					<label for="grape">Grape:</label>
 					<select name="grape" id="grape">
 						<option>*</option>
-						<option>Red</option>
-						<option>Green</option>
+						<?php
+							foreach (getGrapeVarieties() as $variety)
+								echo '<option>' . $variety . '</option>';
+						?>
 					</select>
 				</li>
 				<li>
-					<label for="fromyear">Years between </label>
+					<label for="fromyear">Between year </label>
 					<select name="fromyear" id="fromyear">
 						<option>*</option>
-						<option>1991</option>
-						<option>1992</option>
+						<?php
+							foreach (getYears() as $year)
+								echo '<option>' . $year . '</option>';
+						?>
 					</select>
 					<label class='smllbl' for="toyear">and</label>
 					<select name="toyear" id="toyear">
 						<option>*</option>
-						<option>1991</option>
-						<option>1992</option>
+						<?php
+							foreach (getYears() as $year)
+								echo '<option>' . $year . '</option>';
+						?>
 					</select>
 				</li>
 				<li>
@@ -66,7 +79,7 @@
 					</select>
 				</li>
 				<li>
-					<label for="fromcost">Prices between </label>
+					<label for="fromcost">Price between </label>
 					<input type="text" name="fromcost" id="fromcost" value='*' />
 					<label class='smllbl' for="tocost">and</label>
 					<input type="text" name="tocost" id="tocost" value='*' />
