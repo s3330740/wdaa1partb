@@ -1,5 +1,5 @@
 <?php
-
+	//some comment
 	define('DB_HOST', 'yallara.cs.rmit.edu.au:51725');
 	define('DB_USER', 'root');
 	define('DB_PASS', 'pass');
