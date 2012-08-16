@@ -64,19 +64,11 @@
 				</li>
 				<li>
 					<label for="minstock">Minimum in stock:</label>
-					<select name="minstock" id="minstock">
-						<option>*</option>
-						<option>1</option>
-						<option>2</option>
-					</select>
+					<input type="text" name="minstock" id="minstock" value='*' />
 				</li>
 				<li>
 					<label for="minpurchase">Minimum purchase:</label>
-					<select type="text" name="minpurchase" id="minpurchase">
-						<option>*</option>
-						<option>1</option>
-						<option>2</option>
-					</select>
+					<input type="text" name="minpurchase" id="minpurchase" value='*' />
 				</li>
 				<li>
 					<label for="fromcost">Price between </label>

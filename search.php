@@ -1,3 +1,8 @@
+<?php
+	require_once('config.php');
+	require_once('db.php');
+?>
+
 <html>
 	<head>
 		<title>S3330740 WDA Assignment 1</title>
@@ -21,17 +26,34 @@
 				<th>Total Sold</th>
 				<th>Total Revenue</th>
 			</tr>
-			<tr>
-				<td>Wine Name</td>
-				<td>Grape Variety</td>
-				<td>Year</td>
-				<td>Winery</td>
-				<td>Region</td>
-				<td>Cost</td>
-				<td>Stock</td>
-				<td>Total Sold</td>
-				<td>Total Revenue</td>
-			</tr>
+			<?php
+				$rows = search(
+						$_GET['wine'],
+						$_GET['winery'],
+						$_GET['region'],
+						$_GET['grape'],
+						$_GET['fromyear'],
+						$_GET['toyear'],
+						$_GET['minstock'],
+						$_GET['minpurchase'],
+						$_GET['fromcost'],
+						$_GET['tocost']
+					);
+				foreach ($rows as $row)
+				{
+					echo '<tr>';
+					echo '<td>' . $row['wine_name'] . '</td>';
+					echo '<td>' . $row['variety'] . '</td>';
+					echo '<td>' . $row['year'] . '</td>';
+					echo '<td>' . $row['winery_name'] . '</td>';
+					echo '<td>' . $row['region_name'] . '</td>';
+					echo '<td>$' . $row['cost'] . '</td>';
+					echo '<td>' . $row['on_hand'] . '</td>';
+					echo '<td>' . $row['qty_sold'] . '</td>';
+					echo '<td>$' . $row['revenue'] . '</td>';
+					echo '</tr>';
+				}
+			?>
 		</table>
 	</body>
 </html>
